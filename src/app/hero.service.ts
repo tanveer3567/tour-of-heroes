@@ -74,7 +74,6 @@ export class HeroService {
   }
 
   searchHero(term: string): Observable<Hero[]> {
-    console.log(term);
     if (!term.trim()) { return of([]); }
     const observable: Observable<Hero[]> = this.http.get<Hero[]>(`${this.heroesUrl}/?name${term}`).pipe(
       tap(x => x.length ? this.log(`found heroes matching "${term}"`) : this.log(`no heroes matching "${term}"`)),
