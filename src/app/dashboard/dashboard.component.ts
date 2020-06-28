@@ -5,11 +5,12 @@ import { MessageService } from '../message.service';
 
 
 @Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css'],
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class HeroesComponent implements OnInit {
+export class DashboardComponent implements OnInit {
+
   heroes: Hero[];
   selectedHero: Hero;
 
@@ -19,11 +20,12 @@ export class HeroesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.heroService.getHeroes().subscribe(data => this.heroes = data);
+    this.heroService.getHeroes().subscribe(data => this.heroes = data.slice(0, 4));
   }
 
   select(hero: Hero) {
     this.selectedHero = hero;
     this.messageService.addMessage(`${this.selectedHero.name} has been selected`);
   }
+
 }
