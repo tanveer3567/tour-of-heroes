@@ -1,6 +1,6 @@
 <h3>List of Heroes</h3>
 <ul class="heroes">
-    <div *ngFor="let hero of heroes">
+    <div *ngFor="let hero of heroes" [class.selected]="hero === selectedHero">
         <li routerLink="/details/{{hero.id}}">
             <span class="badge">{{hero.id}}</span>
             {{hero.name}}
